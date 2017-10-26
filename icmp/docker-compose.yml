@@ -11,7 +11,7 @@ icmp:
   image: propersoft/docker-cd:icmp
   volumes:
     - ./entrypoint.sh:/entrypoint.sh
+    - ./fe-deploy:/opt/icmp
   environment:
     - WORKDIR=/opt/icmp
-    - GH_OAUTH_TOKEN
   entrypoint: /entrypoint.sh

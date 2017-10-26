@@ -4,6 +4,7 @@ nginx:
     - ihos
   volumes:
     - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./pass:/etc/nginx/pass
   expose:
     - "8080"
 
@@ -11,7 +12,10 @@ ihos:
   image: propersoft/docker-cd:ihos 
   volumes:
     - ./entrypoint.sh:/entrypoint.sh
+    - ./fe-deploy:/opt/ihos
   environment:
     - WORKDIR=/opt/ihos
-    - GH_OAUTH_TOKEN
+  expose:
+    - "9000"  
+    - "8080"     
   entrypoint: /entrypoint.sh
